@@ -36,7 +36,7 @@ public class TennisPlayerApplication implements CommandLineRunner {
                         17)));
         logger.info("All Players Data: {}", dao.getAllPlayers());*/
 
-        //Inserting a player
+        /*//Inserting a player
         logger.info("Inserting Player 4: {}", dao.insertPlayer(
                 new Player(4, "Thiem", "Austria",
                         new Date(System.currentTimeMillis()), 17)));
@@ -47,6 +47,9 @@ public class TennisPlayerApplication implements CommandLineRunner {
                         Date.valueOf("1993-09-03"), 17)));
 
         //View player by Id
-        logger.info("Players with Id 4: {}", dao.getPlayerById(4));
+        logger.info("Players with Id 4: {}", dao.getPlayerById(4));*/
+
+        logger.info("Deleting Player with Id 2: {}", dao.deletePlayerById(2));
+        logger.info("All Players Data: {}", dao.getAllPlayers());
     }
 }
