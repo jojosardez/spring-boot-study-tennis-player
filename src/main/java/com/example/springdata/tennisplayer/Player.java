@@ -1,14 +1,12 @@
 package com.example.springdata.tennisplayer;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="Player")
-public class Player{
+@Table(name = "Player")
+@NamedQuery(name = "get_all_players", query = "select p from Player p")
+public class Player {
     @Id
     @GeneratedValue
     private int id;
@@ -16,7 +14,8 @@ public class Player{
     private String nationality;
     private Date birthDate;
     private int titles;
-    public Player( ) {
+
+    public Player() {
 
     }
 
