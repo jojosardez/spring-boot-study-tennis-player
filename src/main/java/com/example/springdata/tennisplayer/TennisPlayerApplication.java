@@ -17,8 +17,11 @@ public class TennisPlayerApplication implements CommandLineRunner {
     @Autowired
     PlayerDao dao;
 
+    /*@Autowired
+    PlayerRepository repo;*/
+
     @Autowired
-    PlayerRepository repo;
+    PlayerSpringDataRepository repo;
 
     public static void main(String[] args) {
         SpringApplication.run(TennisPlayerApplication.class, args);
@@ -60,8 +63,7 @@ public class TennisPlayerApplication implements CommandLineRunner {
         /*// Using custom mapper
         logger.info("French Players: {}", dao.getPlayerByNationality("France"));*/
 
-        // JPA operations
-
+        /*// JPA operations
         //insert players
         logger.info("\n\n>> Inserting Player: {}\n", repo.insertPlayer(
                 new Player("Djokovic", "Serbia", Date.valueOf("1987-05-22"), 81)));
@@ -82,6 +84,24 @@ public class TennisPlayerApplication implements CommandLineRunner {
         repo.deletePlayerById(2);
 
         //get all players
-        logger.info("All Players Data: {}", repo.getAllPlayers());
+        logger.info("All Players Data: {}", repo.getAllPlayers());*/
+
+        // Spring JpaRepository
+        //Inserting rows
+        logger.info("Inserting Player: {}", repo.save(new Player("Djokovic", "Serbia",
+                Date.valueOf("1987-05-22"), 81)));
+        logger.info("Inserting Player: {}", repo.save(new Player("Monfils", "France",
+                Date.valueOf("1986-09-01"), 10)));
+        logger.info("Inserting Player: {}", repo.save(new Player("Thiem", "Austria",
+                new Date(System.currentTimeMillis()), 17)));
+        //Updating row
+        logger.info("Updating Player with Id 3: {}", repo.save(new Player(3, "Thiem", "Austria",
+                Date.valueOf("1993-09-03"), 17)));
+        //Find by id
+        logger.info("Player with Id 2: {}", repo.findById(2));
+        //Find all
+        logger.info("All Players Data: {}", repo.findAll());
+        //Delete by id
+        repo.deleteById(2);
     }
 }
