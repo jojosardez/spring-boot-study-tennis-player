@@ -1,8 +1,16 @@
 package com.example.springdata.tennisplayer;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+@Entity
+@Table(name="Player")
 public class Player{
+    @Id
+    @GeneratedValue
     private int id;
     private String name;
     private String nationality;
@@ -15,6 +23,15 @@ public class Player{
     public Player(int id, String name, String nationality, Date birthDate, int titles) {
         super();
         this.id = id;
+        this.name = name;
+        this.nationality = nationality;
+        this.birthDate = birthDate;
+        this.titles = titles;
+    }
+
+    //constructor without Id attribute
+    public Player(String name, String nationality, Date birthDate, int titles) {
+        super();
         this.name = name;
         this.nationality = nationality;
         this.birthDate = birthDate;
